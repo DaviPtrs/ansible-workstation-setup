@@ -1,0 +1,4 @@
+#!/bin/bash
+sudo ansible-playbook -i inventory.ini main.yml -e user=$USER && \
+(echo -e "\e[32mCopy and paste the following key to your Git SSH keys Settings\e[39m"; \
+cat ~/.ssh/id_rsa.pub)

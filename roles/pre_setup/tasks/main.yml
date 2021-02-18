@@ -1,0 +1,20 @@
+---
+- name: Update apt-get repo and cache
+  apt: 
+    update_cache: yes 
+    force_apt_get: yes 
+    cache_valid_time: 3600
+
+- name: Perform safe upgrade
+  apt:
+    upgrade: yes
+
+- import_tasks: utils.yml
+
+- name: Update all packages
+  apt:
+    name: "*"
+    state: latest
+
+- name: Get service facts
+  service_facts:

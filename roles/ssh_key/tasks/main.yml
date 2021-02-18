@@ -1,0 +1,19 @@
+---
+- name: Check if there's a existent ssh key
+  stat:
+    path: "/home/{{ user }}/.ssh/id_rsa"
+  register: ssh_key
+
+- name: Generate an OpenSSH keypair with the default values (4096 bits, rsa)
+  openssh_keypair:
+    path: "/home/{{ user }}/.ssh/id_rsa"
+    owner: "{{ user }}"
+    group: "{{ user }}" 
+    state: present
+  when: not ssh_key.stat.exists
+
+- name: Fix owner of the generated pub key
+  file:
+    path: "/home/{{ user }}/.ssh/id_rsa.pub"
+    owner: "{{ user }}"
+    group: "{{ user }}"

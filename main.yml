@@ -1,0 +1,11 @@
+---
+- name: Generate Enonic XP and prototype local environment files
+  hosts: local
+  gather_facts: no
+  become: True
+  vars:
+    docker_compose_version: "1.28.2"
+  roles:
+    - pre_setup
+    - docker
+    - ssh_key

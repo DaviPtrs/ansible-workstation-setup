@@ -1,0 +1,8 @@
+#!/bin/bash
+sudo apt update && \
+sudo apt install -y git python3-pip
+sudo pip3 install ansible
+cd ~
+git clone https://github.com/DaviPtrs/ansible-workstation-setup.git
+cd ansible-workstation-setup/
+./run

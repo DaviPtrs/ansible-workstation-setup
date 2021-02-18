@@ -1,0 +1,27 @@
+---
+- name: Install Docker plugin for Python 3
+  pip:
+    name: docker
+
+- name: Pull hello-world docker image
+  docker_image:
+    name: hello-world
+    source: pull
+
+- name: Run hello-world container
+  docker_container:
+    name: hello-world
+    image: hello-world
+    state: started
+  changed_when: false
+  
+
+- name: Remove hello-world container
+  docker_container:
+    name: hello-world
+    state: absent
+  changed_when: false
+  
+- name: Test docker-compose
+  shell: docker-compose --version
+  changed_when: False

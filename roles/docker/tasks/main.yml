@@ -1,0 +1,10 @@
+---
+- name: Check if Docker is installed
+  set_fact: docker="{{ ansible_facts.services['docker'] is defined }}"
+
+- import_tasks: docker.yml
+  when: docker is false
+
+- import_tasks: docker-compose.yml
+
+- import_tasks: test.yml

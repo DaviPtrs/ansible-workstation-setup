@@ -1,0 +1,8 @@
+{
+    "ansible.cloudShellConfirmed": true,
+    "files.associations": {
+        "**/*.yml": "ansible",
+    },
+    "editor.insertSpaces": true,
+    "editor.tabSize": 2
+}
